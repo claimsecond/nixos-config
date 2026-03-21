@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-    /etc/nixos/hardware-configuration.nix
+    ./hardware-configuration.nix
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -66,8 +66,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     git
+    #  neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
