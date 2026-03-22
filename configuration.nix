@@ -7,7 +7,9 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    ./hardware-configuration.nix 
+    ./modules/audio.nix
+    ./modules/xdg.nix
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
