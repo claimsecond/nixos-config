@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  xdg.portal = {
+  services.xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
     config.common.default = "*";
