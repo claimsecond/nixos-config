@@ -97,4 +97,30 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
 
+  # VMware
+  virtualisation.vmware.guest.enable = true;
+
+  # Disk
+  services.fstrim.enable = true;
+
+  # Nix optimisation
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 7d";
+  };
+
+  nix.settings.auto-optimise-store = true;
+
+  # Memory (если мало RAM)
+  zramSwap = {
+    enable = true;
+    memoryPercent = 50;
+  };
+
+  # Disable unnecessary services
+  services.printing.enable = false;
+  services.avahi.enable = false;
+  hardware.bluetooth.enable = false;
+
 }
