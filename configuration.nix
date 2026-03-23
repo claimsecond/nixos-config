@@ -108,9 +108,14 @@
   # Nix optimisation
   nix.gc = {
     automatic = true;
-    dates = "daily";
+    dates = "weekly";
     options = "--delete-older-than 7d";
-  };
+  }; 
+  systemd.services.nix-gc.serviceConfig = {
+  IOSchedulingClass = "idle";
+  CPUSchedulingPolicy = "idle";
+  Nice = 19;
+};
 
   nix.settings.auto-optimise-store = true;
 
@@ -123,6 +128,10 @@
   # Disable unnecessary services
   services.printing.enable = false;
   services.avahi.enable = false;
-  hardware.bluetooth.enable = false;
+  hardware.bluetooth.enable = false; 
+
+  services.udev.extraRules = ''
+  ACTION=="add|change", KERNEL=="sda", ATTR{queue/rotational}="0"
+  '';
 
 }
