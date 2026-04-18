@@ -17,8 +17,11 @@
     neovim
   ];
 
-  home.sessionVariables = {
-    XCURSOR_SIZE = "16";
-    XCURSOR_THEME = "Adwaita";
+  home.pointerCursor = {
+  gtk.enable = true;
+  # x11.enable = true; # Нужно, если используете XWayland приложения
+  package = pkgs.bibata-cursors; # Пакет с темой (например, Bibata)
+  name = "Bibata-Modern-Classic"; # Точное название темы
+  size = 24;
   };
 }
