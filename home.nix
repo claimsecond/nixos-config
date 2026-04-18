@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ./modules/niri.nix
+    ./modules/niri.nix 
+    inputs.niri.homeModules.niri
   ];
 
   home.username = "claim";
