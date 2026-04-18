@@ -272,10 +272,12 @@
     // See the binds section below for more spawn examples.
 
     // This line starts waybar, a commonly used bar for Wayland compositors.
-    spawn-at-startup "waybar"
+    // spawn-at-startup "waybar"
 
     // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-    // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+    // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell" 
+    spawn-at-startup "systemctl" "--user" "import-environment" "PATH" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
+    spawn-at-startup "systemctl" "--user" "start" "graphical-session.target"
 
     hotkey-overlay {
         // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.

@@ -33,7 +33,8 @@
   home.packages = with pkgs; [
     git
     neovim 
-    inputs.dms.packages.${pkgs.system}.default
+    inputs.dms.packages.${pkgs.system}.default 
+    quickshell
     matugen
     brightnessctl
     pamixer 

@@ -12,7 +12,8 @@
   dms = {
     url = "github:AvengeMedia/DankMaterialShell/stable";
     inputs.nixpkgs.follows = "nixpkgs";
-    };
+    }; 
+  niri.url = "github:YaLTeR/niri";
   };
 
   outputs = { self, nixpkgs, home-manager, dms, ... }@inputs:
