@@ -80,7 +80,6 @@
     #  neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  git
     niri
-    dms-shell
     nirius
     alacritty
     adwaita-icon-theme
@@ -148,5 +147,5 @@
   services.udev.extraRules = ''
   ACTION=="add|change", KERNEL=="sda", ATTR{queue/rotational}="0"
   '';
-
+  services.dbus.enable = true;
 }

@@ -22,12 +22,11 @@
   in {
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       inherit system;
+      specialArgs = { inherit inputs; };
 
       modules = [
         ./configuration.nix 
-
         dms.nixosModules.default
-
         home-manager.nixosModules.home-manager
 
         {
