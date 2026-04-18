@@ -18,7 +18,7 @@
   ];
 
   home.sessionVariables = {
-    XCURSOR_SIZE = "24";
+    XCURSOR_SIZE = "14";
     XCURSOR_THEME = "Adwaita";
   };
 }
