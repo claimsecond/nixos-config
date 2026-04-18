@@ -15,7 +15,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, dms }:
+  outputs = { self, nixpkgs, home-manager, dms, ... }@inputs:
   let
     system = "x86_64-linux";
     hostname = "nixos";
@@ -32,7 +32,8 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
+          home-manager.backupFileExtension = "backup"; 
+          home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.users.claim = import ./home.nix;
         }
       ];
