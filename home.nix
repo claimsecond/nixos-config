@@ -3,6 +3,8 @@
 {
   imports = [
     ./modules/niri.nix 
+    inputs.dms.homeModules.dank-material-shell 
+    inputs.niri.homeModules.niri
   ];
 
   home.username = "claim";
@@ -10,7 +12,8 @@
 
   home.stateVersion = "26.05"; # проверьте свою версию nixos
 
-  programs.git.enable = true;
+  programs.git.enable = true; 
+  programs.dank-material-shell.enable = true;
 
   home.packages = with pkgs; [
     git

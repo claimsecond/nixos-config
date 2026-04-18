@@ -2,12 +2,20 @@
   description = "My NixOS system";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+  home-manager = {
+    url = "github:nix-community/home-manager";
+    inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+  dms = {
+    url = "github:AvengeMedia/DankMaterialShell/stable";
+    inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager }:
+  outputs = { self, nixpkgs, home-manager, dms }:
   let
     system = "x86_64-linux";
     hostname = "nixos";
@@ -16,7 +24,9 @@
       inherit system;
 
       modules = [
-        ./configuration.nix
+        ./configuration.nix 
+
+        dms.nixosModules.default
 
         home-manager.nixosModules.home-manager
 

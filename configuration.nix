@@ -71,24 +71,6 @@
     packages = with pkgs; [];
   };
 
-  systemd.user.services.dms = {
-    enable = true;
-    description = "DMS shell service";
-    wantedBy = [ "default.target" ];
-    unitConfig = {
-      After = "graphical-session.target";
-    };
-    serviceConfig = {
-      ExecStart = "${pkgs.dms-shell}/bin/dms run";
-      Restart = "on-failure";
-      RestartSec = 5;
-      Environment = [
-        "XDG_SESSION_TYPE=wayland"
-        "XDG_CURRENT_DESKTOP=niri"
-      ];
-    };
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -115,7 +97,8 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-    services.openssh.enable = true;
+  services.openssh.enable = true; 
+
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

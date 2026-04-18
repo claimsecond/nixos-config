@@ -635,5 +635,7 @@
         // moving the mouse or pressing any other key.
         Mod+Shift+P { power-off-monitors; }
     }
-  '';
+  ''; 
+  
+  services.dankMaterialShell.enable = true;
 }
