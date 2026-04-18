@@ -3,7 +3,6 @@
 {
   imports = [
     ./modules/niri.nix 
-    inputs.niri.homeModules.niri
   ];
 
   home.username = "claim";
@@ -16,13 +15,27 @@
   home.packages = with pkgs; [
     git
     neovim
+    dms-shell
+    quickshell
+    matugen
+    brightnessctl
+    pamixer
   ];
 
   home.pointerCursor = {
-  gtk.enable = true;
-  # x11.enable = true; # Нужно, если используете XWayland приложения
-  package = pkgs.bibata-cursors; # Пакет с темой (например, Bibata)
-  name = "Bibata-Modern-Classic"; # Точное название темы
-  size = 24;
+    gtk.enable = true;
+    # x11.enable = true; # Нужно, если используете XWayland приложения
+    package = pkgs.bibata-cursors; # Пакет с темой (например, Bibata)
+    name = "Bibata-Modern-Classic"; # Точное название темы
+    size = 24;
+  };
+
+  systemd.user.services.dms = {
+    description = "DMS shell service";
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.dms-shell}/bin/dms run";
+      Restart = "on-failure";
+    };
   };
 }
