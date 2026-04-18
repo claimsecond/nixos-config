@@ -29,13 +29,4 @@
     name = "Bibata-Modern-Classic"; # Точное название темы
     size = 24;
   };
-
-  systemd.user.services.dms = {
-    description = "DMS shell service";
-    wantedBy = [ "default.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.dms-shell}/bin/dms run";
-      Restart = "on-failure";
-    };
-  };
 }
