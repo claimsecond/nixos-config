@@ -89,7 +89,7 @@
         // for the resolution.
         // If the mode is omitted altogether or is invalid, niri will pick one automatically.
         // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-        mode "1920x1080@120.030"
+        mode "1920x1080"
 
         // You can use integer or fractional scale, for example use 1.5 for 150% scale.
         scale 1
@@ -107,7 +107,7 @@
         // so to put another output directly adjacent to it on the right, set its x to 1920.
         // If the position is unset or results in an overlap, the output is instead placed
         // automatically.
-        position x=1280 y=0
+        position x=0 y=0
     }
 
     // Settings that influence how windows are positioned and sized.
