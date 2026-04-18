@@ -71,6 +71,17 @@
     packages = with pkgs; [];
   };
 
+  systemd.user.services.dms = {
+    description = "DMS shell service";
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.dms-shell}/bin/dms run";
+      Restart = "on-failure";
+      RestartSec = 5;
+      After = "graphical-session.target";
+    };
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
