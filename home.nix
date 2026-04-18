@@ -38,7 +38,9 @@
     quickshell
     matugen
     brightnessctl
-    pamixer
+    pamixer 
+    cava
+    dgop
   ];
 
   home.pointerCursor = {
