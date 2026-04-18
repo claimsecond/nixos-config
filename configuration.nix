@@ -82,6 +82,10 @@
       ExecStart = "${pkgs.dms-shell}/bin/dms run";
       Restart = "on-failure";
       RestartSec = 5;
+      Environment = [
+        "XDG_SESSION_TYPE=wayland"
+        "XDG_CURRENT_DESKTOP=niri"
+      ];
     };
   };
 
