@@ -12,4 +12,18 @@
     git
     neovim
   ];
+
+  xdg.configFile."niri/config.kdl".text = ''
+    input {
+      keyboard {
+        xkb {
+          layout "us"
+        }
+      }
+    }
+
+    binds {
+      Super+T { spawn "alacritty"; }
+    }
+  '';
 }
