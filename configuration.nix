@@ -72,13 +72,16 @@
   };
 
   systemd.user.services.dms = {
+    enable = true;
     description = "DMS shell service";
     wantedBy = [ "default.target" ];
+    unitConfig = {
+      After = "graphical-session.target";
+    };
     serviceConfig = {
       ExecStart = "${pkgs.dms-shell}/bin/dms run";
       Restart = "on-failure";
       RestartSec = 5;
-      After = "graphical-session.target";
     };
   };
 
