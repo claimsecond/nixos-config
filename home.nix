@@ -1,4 +1,4 @@
-{ config, pkgs, inputs ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -34,7 +34,6 @@
     git
     neovim 
     inputs.dms.packages.${pkgs.system}.default
-    quickshell
     matugen
     brightnessctl
     pamixer 
