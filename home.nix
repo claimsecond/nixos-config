@@ -16,4 +16,9 @@
     git
     neovim
   ];
+
+  home.sessionVariables = {
+    XCURSOR_SIZE = "16";
+    XCURSOR_THEME = "Adwaita";
+  };
 }
