@@ -54,6 +54,15 @@
     variant = "";
   };
 
+  # Enable `niri` Wayland session and install Dank Material Shell.
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri;
+    useNautilus = false;
+  };
+
+  services.xserver.enable = false;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.claim = {
     isNormalUser = true;
@@ -70,6 +79,9 @@
   environment.systemPackages = with pkgs; [
     #  neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  git
+    niri
+    dms-shell
+    nirius
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
