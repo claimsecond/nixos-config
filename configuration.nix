@@ -82,6 +82,7 @@
     niri
     dms-shell
     nirius
+    alacritty
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
