@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs ... }:
 
 {
   imports = [
@@ -15,7 +15,6 @@
   programs.git.enable = true; 
   programs.dank-material-shell = {
   enable = true; 
-  quickshell.package = pkgs.quickshell;
 
   systemd = {
     enable = true;             # Systemd service for auto-start
@@ -33,14 +32,16 @@
 
   home.packages = with pkgs; [
     git
-    neovim
-    dms-shell
+    neovim 
+    inputs.dms.packages.${pkgs.system}.default
     quickshell
     matugen
     brightnessctl
     pamixer 
     cava
-    dgop
+    dgop 
+    khal
+    wtype
   ];
 
   home.pointerCursor = {
