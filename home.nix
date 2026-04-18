@@ -34,6 +34,7 @@
     git
     neovim 
     inputs.dms.packages.${pkgs.system}.default 
+    (writeShellScriptBin "qs" "exec ${quickshell}/bin/quickshell \"$@\"")
     quickshell
     matugen
     brightnessctl
