@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -83,6 +83,8 @@
     nirius
     alacritty
     adwaita-icon-theme
+    inputs.noctalia.packages.${pkgs.system}.default
+    inputs.quickshell.packages.${pkgs.system}.default
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -146,5 +148,23 @@
   services.udev.extraRules = ''
   ACTION=="add|change", KERNEL=="sda", ATTR{queue/rotational}="0"
   '';
+
+  systemd.user.services.noctalia = {
+    enable = true;
+    description = "Noctalia shell service";
+    wantedBy = [ "default.target" ];
+    unitConfig = {
+      After = "graphical-session.target";
+    };
+    serviceConfig = {
+      ExecStart = "${inputs.noctalia.packages.${pkgs.system}.default}/bin/noctalia";
+      Restart = "on-failure";
+      RestartSec = 5;
+      Environment = [
+        "XDG_SESSION_TYPE=wayland"
+        "XDG_CURRENT_DESKTOP=niri"
+      ];
+    };
+  };
 
 }
