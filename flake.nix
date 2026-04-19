@@ -24,7 +24,7 @@
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       inherit system;
 
-      specialArgs = { inherit inputs; };
+      specialArgs = { inputs = { inherit noctalia quickshell nixpkgs; }; };
 
       modules = [
         ./configuration.nix
