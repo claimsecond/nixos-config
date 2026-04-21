@@ -278,7 +278,8 @@
     // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell" 
 
     spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "PATH"
-    spawn-at-startup "systemctl" "--user" "start" "graphical-session.target"
+spawn-at-startup "systemctl" "--user" "import-environment" "PATH"
+spawn-at-startup "systemctl" "--user" "restart" "noctalia.service"
 
     hotkey-overlay {
         // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
