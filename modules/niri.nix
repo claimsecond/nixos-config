@@ -275,7 +275,10 @@
     spawn-at-startup "waybar"
 
     // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-    // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+    // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell" 
+
+    spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "PATH"
+    spawn-at-startup "systemctl" "--user" "start" "graphical-session.target"
 
     hotkey-overlay {
         // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
