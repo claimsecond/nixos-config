@@ -15,7 +15,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, quickshell, noctalia }:
+  outputs = { self, nixpkgs, home-manager, quickshell, noctalia, ... } @ inputs:
   let
     system = "x86_64-linux";
     hostname = "nixos";
@@ -23,7 +23,7 @@
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       inherit system;
 
-      specialArgs = { inputs = { inherit noctalia quickshell nixpkgs; }; };
+      specialArgs = { inherit inputs; }; # [cite: 38]
 
       modules = [
         ./configuration.nix
@@ -32,10 +32,11 @@
 
         {
           home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup"; 
-          home-manager.extraSpecialArgs = { inherit inputs; }; # [cite: 39]
-          home-manager.users.claim = import ./home.nix;
+        home-manager.useUserPackages = true;
+        home-manager.backupFileExtension = "backup"; 
+        # Теперь эта строка не будет выдавать ошибку
+        home-manager.extraSpecialArgs = { inherit inputs; }; # [cite: 39]
+        home-manager.users.claim = import ./home.nix;
         }
       ];
     };
