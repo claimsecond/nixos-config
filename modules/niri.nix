@@ -279,7 +279,8 @@
     spawn-at-startup "systemctl" "--user" "import-environment" "PATH" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
     spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
     spawn-at-startup "systemctl" "--user" "start" "graphical-session.target"
-    spawn-at-startup "systemctl" "--user" "enable" "--now" "noctalia.service"
+    # Start Noctalia directly in the session environment (works when 'noctalia' is on PATH)
+    spawn-at-startup "noctalia"
 
     hotkey-overlay {
         // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
