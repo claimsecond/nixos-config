@@ -25,11 +25,4 @@
     size = 24;
   }; 
 
-  systemd.user.services.noctalia = {
-    Unit.After = [ "graphical-session.target" ];
-    Service = {
-      # Мы явно указываем правильный путь к правильному файлу
-      ExecStart = "${inputs.noctalia.packages.${pkgs.system}.default}/bin/noctalia-shell"; 
-      Restart = "on-failure";
-    };
 }
