@@ -24,14 +24,4 @@
     name = "Bibata-Modern-Classic"; # Точное название темы
     size = 24;
   };
-
-  # Enable Noctalia user service via Home Manager
-  noctalia = {
-    enable = true;
-    systemd = {
-      enable = true; # create user service unit for noctalia
-    };
-    # other noctalia-specific options can go here
-  };
-
 }
