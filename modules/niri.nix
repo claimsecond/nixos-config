@@ -274,13 +274,12 @@
     // This line starts waybar, a commonly used bar for Wayland compositors.
     // spawn-at-startup "waybar"
 
-    // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-    // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell" 
-    spawn-at-startup "systemctl" "--user" "import-environment" "PATH" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
-    spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
+    // 1. Прокидываем переменные среды
+    spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "PATH"
+    spawn-at-startup "systemctl" "--user" "import-environment" "PATH"
+
+    // 2. Активируем графическую сессию, чтобы Noctalia запустилась по зависимости
     spawn-at-startup "systemctl" "--user" "start" "graphical-session.target"
-    # Start Noctalia directly in the session environment (works when 'noctalia' is on PATH)
-    spawn-at-startup "noctalia-shell"
 
     hotkey-overlay {
         // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
