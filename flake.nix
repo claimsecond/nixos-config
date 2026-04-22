@@ -9,14 +9,18 @@
     inputs.nixpkgs.follows = "nixpkgs";
     };
 
-  dms = {
-    url = "github:AvengeMedia/DankMaterialShell";
-    inputs.nixpkgs.follows = "nixpkgs";
-    }; 
-  niri.url = "github:YaLTeR/niri";
+  quickshell = {
+      url = "github:outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.quickshell.follows = "quickshell";  # Use same quickshell version
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, dms, ... }@inputs:
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
   let
     system = "x86_64-linux";
     hostname = "nixos";
@@ -27,7 +31,7 @@
 
       modules = [
         ./configuration.nix 
-        dms.nixosModules.default
+        ./noctalia.nix
         home-manager.nixosModules.home-manager
 
         {
