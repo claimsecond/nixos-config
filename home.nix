@@ -3,7 +3,6 @@
 {
   imports = [
     ./modules/niri.nix 
-    inputs.dms.homeModules.dank-material-shell 
     inputs.niri.homeModules.niri
   ];
 
@@ -13,8 +12,6 @@
   home.stateVersion = "26.05"; # проверьте свою версию nixos
 
   programs.git.enable = true; 
-  programs.dank-material-shell = {
-  enable = true; 
 
   systemd = {
     enable = true;             # Systemd service for auto-start
@@ -33,16 +30,6 @@
   home.packages = with pkgs; [
     git
     neovim 
-    inputs.dms.packages.${pkgs.system}.default 
-    (writeShellScriptBin "qs" "exec ${quickshell}/bin/quickshell \"$@\"")
-    quickshell
-    matugen
-    brightnessctl
-    pamixer 
-    cava
-    dgop 
-    khal
-    wtype
   ];
 
   home.pointerCursor = {

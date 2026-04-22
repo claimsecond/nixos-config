@@ -82,7 +82,6 @@
     niri
     xwayland-satellite
     noctalia-shell
-    nirius
     alacritty
     adwaita-icon-theme
   ];
