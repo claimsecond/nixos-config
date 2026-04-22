@@ -81,7 +81,7 @@
     #  git 
     niri
     xwayland-satellite
-    inputs.noctalia.packages.${system}.default
+    noctalia-shell
     nirius
     alacritty
     adwaita-icon-theme
