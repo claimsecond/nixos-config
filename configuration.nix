@@ -56,8 +56,15 @@
 
   programs.niri = {
     enable = true;
-    # package = pkgs.niri;
-    # useNautilus = false;
+    settings = {
+      # настройки в формате Nix (KDL будет сгенерирован автоматически)
+      # Пример:
+      input.keyboard.xkb.layout = "us,ru";
+      layout.gaps = 16;
+      binds = {
+        "Mod+T".action = "spawn 'alacritty'";
+        "Mod+Q".action = "close-window";
+      };
   };
 
   services.xserver.enable = false;
