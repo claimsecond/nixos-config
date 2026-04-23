@@ -153,4 +153,4 @@
   ACTION=="add|change", KERNEL=="sda", ATTR{queue/rotational}="0"
   '';
   services.dbus.enable = true;
-}
+};
