@@ -641,5 +641,4 @@
     }
   ''; 
   
-  services.dankMaterialShell.enable = true;
 }

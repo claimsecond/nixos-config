@@ -54,7 +54,6 @@
     variant = "";
   };
 
-  # Enable `niri` Wayland session and install Dank Material Shell.
   programs.niri = {
     enable = true;
     # package = pkgs.niri;
