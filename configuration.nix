@@ -54,19 +54,7 @@
     variant = "";
   };
 
-  programs.niri = {
-    enable = true;
-    settings = {
-      # настройки в формате Nix (KDL будет сгенерирован автоматически)
-      # Пример:
-      input.keyboard.xkb.layout = "us,ru";
-      layout.gaps = 16;
-      binds = {
-        "Mod+T".action = "spawn 'alacritty'";
-        "Mod+Q".action = "close-window";
-      };
-    };
-  };
+  programs.niri.enable = true;
 
   services.xserver.enable = false;
 
