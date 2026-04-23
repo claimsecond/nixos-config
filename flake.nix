@@ -2,21 +2,22 @@
   description = "My NixOS system";
 
   inputs = {
-  nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; 
+  niri.url = "github:sodiboo/niri-flake";
 
   home-manager = {
     url = "github:nix-community/home-manager";
     inputs.nixpkgs.follows = "nixpkgs";
     };
 
-  dms = {
-    url = "github:AvengeMedia/DankMaterialShell";
-    inputs.nixpkgs.follows = "nixpkgs";
-    }; 
-  niri.url = "github:YaLTeR/niri";
+  noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.quickshell.follows = "quickshell";  # Use same quickshell version
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, dms, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
     hostname = "nixos";
@@ -27,8 +28,8 @@
 
       modules = [
         ./configuration.nix 
-        dms.nixosModules.default
-        home-manager.nixosModules.home-manager
+        home-manager.nixosModules.home-manager 
+        niri.nixosModules.niri 
 
         {
           home-manager.useGlobalPkgs = true;

@@ -2,14 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs,... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
     ./hardware-configuration.nix 
     ./modules/audio.nix
-    ./modules/xdg.nix
+    ./modules/xdg.nix 
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -57,8 +57,8 @@
   # Enable `niri` Wayland session and install Dank Material Shell.
   programs.niri = {
     enable = true;
-    package = pkgs.niri;
-    useNautilus = false;
+    # package = pkgs.niri;
+    # useNautilus = false;
   };
 
   services.xserver.enable = false;
@@ -95,7 +95,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true; 
+  # services.openssh.enable = true; 
 
 
   # Open ports in the firewall.
