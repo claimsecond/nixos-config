@@ -8,12 +8,9 @@
 
   home.username = "claim";
   home.homeDirectory = "/home/claim";
+  home.stateVersion = "26.05";
 
-  home.stateVersion = "26.05"; # проверьте свою версию nixos
-
-  programs.git.enable = true; 
-
-};
+  programs.git.enable = true;
 
   home.packages = with pkgs; [
     git
@@ -23,9 +20,8 @@
 
   home.pointerCursor = {
     gtk.enable = true;
-    # x11.enable = true; # Нужно, если используете XWayland приложения
-    package = pkgs.bibata-cursors; # Пакет с темой (например, Bibata)
-    name = "Bibata-Modern-Classic"; # Точное название темы
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
     size = 24;
   };
 }
