@@ -65,6 +65,7 @@
         "Mod+T".action = "spawn 'alacritty'";
         "Mod+Q".action = "close-window";
       };
+    };
   };
 
   services.xserver.enable = false;
@@ -85,7 +86,6 @@
   environment.systemPackages = with pkgs; [
     #  neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  git
-    nirius
     alacritty
     adwaita-icon-theme
   ];
@@ -153,4 +153,4 @@
   ACTION=="add|change", KERNEL=="sda", ATTR{queue/rotational}="0"
   '';
   services.dbus.enable = true;
-};
+}
