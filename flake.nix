@@ -33,7 +33,7 @@
       modules = [
         ./configuration.nix 
         home-manager.nixosModules.home-manager 
-        niri.nixosModules.niri 
+        # niri.nixosModules.niri 
 
         {
           home-manager.useGlobalPkgs = true;
