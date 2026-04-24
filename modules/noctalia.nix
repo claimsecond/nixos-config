@@ -1,3 +1,5 @@
+# modules/noctalia.nix
+
 { config, pkgs, inputs, ... }:
 
 {
@@ -5,14 +7,13 @@
     inputs.noctalia.packages.${pkgs.system}.default
   ];
 
-  # автозапуск через systemd user
   systemd.user.services.noctalia = {
     description = "Noctalia shell";
     wantedBy = [ "graphical-session.target" ];
-
     serviceConfig = {
-      ExecStart = "${inputs.noctalia.packages.${pkgs.system}.default}/bin/noctalia-shell";
+      ExecStart = "${inputs.noctalia.packages.${pkgs.system}.default}/bin/noctalia";  # уточните имя бинарника: может быть "noctalia" или "noctalia-shell"
       Restart = "always";
+      RestartSec = 5;
     };
   };
 }

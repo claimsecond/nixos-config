@@ -1,6 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# configuration.nix
 
 { config, pkgs, inputs,... }:
 
@@ -113,16 +111,6 @@
     memoryPercent = 50;
   };
 
-  # Noctalia systemd user service
-  systemd.user.services.noctalia = {
-    wantedBy = [ "graphical-session.target" ];
-    service = {
-      Type = "simple";
-      ExecStart = "${inputs.noctalia.packages.${pkgs.system}.noctalia}/bin/noctalia";
-      Restart = "on-failure";
-      RestartSec = 5;
-    };
-  };
 
   # Disable unnecessary services
   services.printing.enable = false;
