@@ -80,12 +80,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #  neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  git
     alacritty
     adwaita-icon-theme
-    inputs.quickshell.packages.${pkgs.system}.quickshell
-    inputs.noctalia.packages.${pkgs.system}.noctalia
+    inputs.noctalia.packages.${pkgs.system}.default
   ];
 
   system.stateVersion = "25.11"; # Did you read the comment?

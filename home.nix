@@ -15,7 +15,6 @@
   home.packages = with pkgs; [
     git
     neovim 
-    quickshell
   ];
 
   home.pointerCursor = {
