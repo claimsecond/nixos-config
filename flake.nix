@@ -45,7 +45,7 @@
         }
 
         # noctalia подключается как отдельный модуль
-        ./noctalia.nix
+        ./modules/noctalia.nix
       ];
     };
   };
