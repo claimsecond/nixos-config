@@ -3,7 +3,8 @@
 {
   imports = [
     ./modules/niri.nix 
-    inputs.niri.homeModules.niri
+    inputs.niri.homeModules.niri 
+    noctalia.homeModules.default
   ];
 
   home.username = "claim";
