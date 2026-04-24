@@ -1,52 +1,51 @@
-# flake.nix
 {
-  description = "My NixOS system";
+  description = "NixOS with niri + noctalia";
 
   inputs = {
-  nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; 
-  niri = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-  home-manager = {
-    url = "github:nix-community/home-manager";
-    inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-  quickshell = {
-      url = "github:noctalia-dev/quickshell";
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-  noctalia = {
+    noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, niri, noctalia, ... }@inputs:
   let
     system = "x86_64-linux";
-    hostname = "nixos";
   in {
-    nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       inherit system;
+
       specialArgs = { inherit inputs; };
 
       modules = [
-        ./configuration.nix 
-        home-manager.nixosModules.home-manager 
-        niri.nixosModules.niri 
+        ./configuration.nix
+
+        # niri
+        niri.nixosModules.niri
+
+        # home-manager
+        home-manager.nixosModules.home-manager
 
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup"; 
-          home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.users.claim = import ./home.nix;
         }
+
+        # noctalia подключается как отдельный модуль
+        ./noctalia.nix
       ];
     };
   };
