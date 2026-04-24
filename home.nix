@@ -3,11 +3,13 @@
 {
   imports = [
     ./modules/niri.nix 
+    inputs.niri.homeModules.niri
   ];
 
   home.username = "claim";
   home.homeDirectory = "/home/claim";
-  home.stateVersion = "26.05";
+
+  home.stateVersion = "26.05"; # проверьте свою версию nixos
 
   programs.git.enable = true; 
   programs.niri = {
@@ -27,7 +29,7 @@
         inactive.color = "#${config.colorScheme.palette.base03}ff";
         };
       };
-    };
+   };
   };
 
   home.packages = with pkgs; [
@@ -38,8 +40,9 @@
 
   home.pointerCursor = {
     gtk.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
+    # x11.enable = true; # Нужно, если используете XWayland приложения
+    package = pkgs.bibata-cursors; # Пакет с темой (например, Bibata)
+    name = "Bibata-Modern-Classic"; # Точное название темы
     size = 24;
   };
 }
