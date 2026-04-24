@@ -4,7 +4,6 @@
   imports = [
     ./modules/niri.nix 
     inputs.niri.homeModules.niri 
-    ./modules/noctalia.nix
   ];
 
   home.username = "claim";
