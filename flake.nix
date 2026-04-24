@@ -14,10 +14,15 @@
     inputs.nixpkgs.follows = "nixpkgs";
     };
 
+  quickshell = {
+      url = "github:Noctalia-Dev/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.quickshell.follows = "quickshell";  # Use same quickshell version
+      inputs.quickshell.follows = "quickshell";
     };
   };
 
@@ -33,7 +38,7 @@
       modules = [
         ./configuration.nix 
         home-manager.nixosModules.home-manager 
-        # niri.nixosModules.niri 
+        niri.nixosModules.niri 
 
         {
           home-manager.useGlobalPkgs = true;

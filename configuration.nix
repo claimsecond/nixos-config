@@ -62,8 +62,7 @@
     variant = "";
   };
 
-  # закомментировал, т.к. хочу попробовать из home.nix, а не из модуля
-  # programs.niri.enable = true;
+  programs.niri.enable = true;
 
   services.xserver.enable = false;
 
@@ -85,6 +84,8 @@
     #  git
     alacritty
     adwaita-icon-theme
+    inputs.quickshell.packages.${pkgs.system}.quickshell
+    inputs.noctalia.packages.${pkgs.system}.noctalia
   ];
 
   system.stateVersion = "25.11"; # Did you read the comment?
@@ -113,6 +114,17 @@
   zramSwap = {
     enable = true;
     memoryPercent = 50;
+  };
+
+  # Noctalia systemd user service
+  systemd.user.services.noctalia = {
+    wantedBy = [ "graphical-session.target" ];
+    service = {
+      Type = "simple";
+      ExecStart = "${inputs.noctalia.packages.${pkgs.system}.noctalia}/bin/noctalia";
+      Restart = "on-failure";
+      RestartSec = 5;
+    };
   };
 
   # Disable unnecessary services
