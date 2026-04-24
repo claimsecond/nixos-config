@@ -4,7 +4,10 @@
 
   inputs = {
   nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; 
-  niri.url = "github:sodiboo/niri-flake";
+  niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   home-manager = {
     url = "github:nix-community/home-manager";
@@ -14,7 +17,7 @@
   noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell";  # Use same quickshell version
+      # inputs.quickshell.follows = "quickshell";  # Use same quickshell version
     };
   };
 
