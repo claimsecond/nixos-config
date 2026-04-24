@@ -15,7 +15,7 @@
     };
 
   quickshell = {
-      url = "github:Noctalia-Dev/quickshell";
+      url = "github:noctalia-dev/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
