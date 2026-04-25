@@ -83,7 +83,7 @@
     inputs.noctalia.packages.${pkgs.system}.default
   ];
 
-  system.stateVersion = "25.11"; # Did you read the comment?
+  system.stateVersion = "25.11"; 
 
   # VMware
   virtualisation.vmware.guest.enable = true;
