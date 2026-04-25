@@ -80,7 +80,8 @@
   environment.systemPackages = with pkgs; [
     alacritty
     adwaita-icon-theme
-    inputs.noctalia.packages.${pkgs.system}.default
+    inputs.noctalia.packages.${pkgs.system}.default 
+    nixos-icons
   ];
 
   system.stateVersion = "25.11"; 

@@ -15,7 +15,6 @@
   home.packages = with pkgs; [
     git
     neovim 
-    nixos-icons
   ];
 
   home.pointerCursor = {
