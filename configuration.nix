@@ -60,7 +60,8 @@
     variant = "";
   };
 
-  programs.niri.enable = true;
+  programs.niri.enable = true; 
+  programs.xwayland.enable = true;
 
   services.xserver.enable = false;
 
