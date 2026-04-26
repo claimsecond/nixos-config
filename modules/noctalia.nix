@@ -1,4 +1,5 @@
-# modules/noctalia.nix
+# modules/noctalia.nix 
+# пока отключил, т.к. подключил через spawn-at-startup "noctalia-shell"
 
 { config, pkgs, inputs, ... }:
 

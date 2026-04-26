@@ -46,7 +46,7 @@
           home-manager.users.claim = import ./home.nix;
         }
 
-        # noctalia подключается как отдельный модуль
+        # noctalia подключается как отдельный модуль - отключил т.к. подключил через spawn-at-startup "noctalia-shell"
         # ./modules/noctalia.nix
       ];
     };
