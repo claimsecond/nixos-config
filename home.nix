@@ -15,6 +15,7 @@
   home.packages = with pkgs; [
     git
     neovim 
+    firefox
   ];
 
   home.pointerCursor = {
