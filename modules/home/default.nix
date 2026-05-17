@@ -1,32 +1,12 @@
 # modules/home/default.nix
-# Точка входа для home-manager конфигурации пользователя claim.
-# Импортируется из modules/nixos/default.nix как:
-#   home-manager.users.claim = import ../home;
+# Flake-parts модуль: оборачивает home-manager конфиг в nixosModules.home.
 
-{ config, pkgs, inputs, ... }:
+{ inputs, ... }: {
+  flake.nixosModules.home = { ... }: {
+    imports = [ inputs.home-manager.nixosModules.home-manager ];
 
-{
-  imports = [
-    ./niri.nix
-  ];
-
-  home.username      = "claim";
-  home.homeDirectory = "/home/claim";
-
-  home.stateVersion = "26.05";
-
-  programs.git.enable = true;
-
-  home.packages = with pkgs; [
-    git
-    neovim
-    firefox
-  ];
-
-  home.pointerCursor = {
-    gtk.enable = true;
-    package    = pkgs.bibata-cursors;
-    name       = "Bibata-Modern-Classic";
-    size       = 24;
+    home-manager.useGlobalPkgs   = true;
+    home-manager.useUserPackages = true;
+    home-manager.users.claim     = import ./user.nix;
   };
 }
