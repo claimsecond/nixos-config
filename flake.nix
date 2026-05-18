@@ -3,10 +3,12 @@
     extra-substituters = [
       "https://niri.cachix.org"
       "https://vicinae.cachix.org"
+      "https://noctalia.cachix.org"
     ];
     extra-trusted-public-keys = [
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
       "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
     ];
   };
 
