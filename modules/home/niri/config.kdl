@@ -1,4 +1,4 @@
-﻿// This config is in the KDL format: https://kdl.dev
+// This config is in the KDL format: https://kdl.dev
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
 // https://niri-wm.github.io/niri/Configuration:-Introduction
@@ -280,10 +280,6 @@ spawn-at-startup "noctalia-shell"
 // ~/.config/niri/config.kdl
 spawn-at-startup "vicinae" "server"
 
-// use whatever shortcut floats your boat
-Mod+Space repeat=false { spawn "vicinae" "toggle"; }
-
-
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
     // skip-at-startup
@@ -371,6 +367,9 @@ binds {
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // Vicinae launcher toggle
+    Mod+Space repeat=false { spawn "vicinae" "toggle"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
