@@ -3,6 +3,10 @@
 # через flake.nixosModules.home, используя все flake.homeModules.*.
 
 { inputs, config, ... }: {
+  imports = [
+    inputs.home-manager.flakeModules.home-manager
+  ];
+
   flake.nixosModules.home = { ... }: {
     imports = [ inputs.home-manager.nixosModules.home-manager ];
 
