@@ -275,7 +275,14 @@ layout {
 spawn-at-startup "systemctl" "--user" "import-environment" "PATH" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
 spawn-at-startup "systemctl" "--user" "start" "graphical-session.target" 
-spawn-at-startup "noctalia-shell"
+spawn-at-startup "noctalia-shell" 
+
+// ~/.config/niri/config.kdl
+spawn-at-startup "vicinae" "server"
+
+// use whatever shortcut floats your boat
+Mod+Space repeat=false { spawn "vicinae" "toggle"; }
+
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
