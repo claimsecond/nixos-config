@@ -65,6 +65,7 @@
       adwaita-icon-theme
       inputs.noctalia.packages.${pkgs.system}.default
       nixos-icons
+      vicinae
     ];
 
     system.stateVersion = "25.11";
